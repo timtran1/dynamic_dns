@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  dynamic_dns:
+    build: .
+    restart: always
+    container_name: dynamic_dns
+    volumes:
+      - ./src:/app/src

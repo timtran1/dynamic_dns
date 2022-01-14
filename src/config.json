@@ -1,0 +1,16 @@
+{
+  "credentials": {
+    "CLOUDFLARE_EMAIL": "tim@example.com",
+    "CLOUDFLARE_API_KEY": "somevalue"
+  },
+  "domains": [
+    {
+      "name": "example.com",
+      "zone_id": "somevalue"
+    },
+    {
+      "name": "subdomain.example.com",
+      "zone_id": "somevalue"
+    },
+  ]
+}
