@@ -6,4 +6,5 @@ services:
     restart: always
     container_name: dynamic_dns
     volumes:
+      - ./config.json:/app/config.json
       - ./src:/app/src
