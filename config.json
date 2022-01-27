@@ -11,6 +11,6 @@
     {
       "name": "subdomain.example.com",
       "zone_id": "somevalue"
-    },
+    }
   ]
 }

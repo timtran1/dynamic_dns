@@ -2,7 +2,7 @@ import requests as r
 import json
 
 
-with open('config.json') as f:
+with open('/app/config.json') as f:
     credentials = json.load(f)['credentials']
 
 CLOUDFLARE_EMAIL = credentials['CLOUDFLARE_EMAIL']
