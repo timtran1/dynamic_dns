@@ -28,7 +28,7 @@ def get_dns_record(domain):
         domain['name']
     )
     res = r.get(url, headers=HEADERS)
-    result_list = json.loads(res.text)['result']
+    result_list = res.json()['result']
 
     return result_list[0] if len(result_list) > 0 else None
 

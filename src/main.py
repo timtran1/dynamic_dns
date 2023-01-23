@@ -19,7 +19,7 @@ print(timestamp() + ' - Current IP is ' + current_ip)
 for domain in domains:
     domain_record = get_dns_record(domain)
 
-    if not domain_record or domain_record['content'] != current_ip:
+    if not domain_record or domain_record['content'] != current_ip or domain_record['proxied'] != domain.get('proxied', False):
         print(timestamp() + ' - Updating DNS data')
 
         if domain_record:
