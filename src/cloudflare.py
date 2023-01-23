@@ -1,7 +1,6 @@
 import requests as r
 import json
 
-
 with open('/app/config.json') as f:
     credentials = json.load(f)['credentials']
 
@@ -12,6 +11,7 @@ HEADERS = {
     'X-Auth-Email': CLOUDFLARE_EMAIL,
     'X-Auth-Key': CLOUDFLARE_API_KEY
 }
+
 
 def get_zones():
     url = '%s/zones' % (
@@ -32,7 +32,8 @@ def get_dns_record(domain):
 
     return result_list[0] if len(result_list) > 0 else None
 
-def update_dns_record(domain_record, ip):
+
+def update_dns_record(domain_record, domain_config, ip):
     url = '%s/zones/%s/dns_records/%s' % (
         CLOUDFLARE_API_ENDPOINT,
         domain_record['zone_id'],
@@ -43,23 +44,24 @@ def update_dns_record(domain_record, ip):
         'name': domain_record['name'],
         'content': ip,
         'ttl': 120,
-        'proxied': domain_record.get('proxied', False) and domain_record['name'][0] != '*'
+        'proxied': domain_config.get('proxied', False) and domain_record['name'][0] != '*'
     }
 
     res = r.put(url, headers=HEADERS, json=data)
     return res.text
 
-def create_dns_record(domain, ip):
+
+def create_dns_record(domain_config, ip):
     url = '%s/zones/%s/dns_records' % (
         CLOUDFLARE_API_ENDPOINT,
-        domain['zone_id']
+        domain_config['zone_id']
     )
     data = {
         'type': 'A',
-        'name': domain['name'],
+        'name': domain_config['name'],
         'content': ip,
         'ttl': 120,
-        'proxied': True
+        'proxied': domain_config.get('proxied', False)
     }
 
     res = r.post(url, headers=HEADERS, json=data)
