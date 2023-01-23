@@ -31,5 +31,5 @@ for domain_config in domains:
         else:
             print(
                 timestamp() + ' - No DNS record found for %s, creating...' % domain_config['name'])
-            result = create_dns_record(domain_record, domain_config, current_ip)
+            result = create_dns_record(domain_config, current_ip)
             print(result)
