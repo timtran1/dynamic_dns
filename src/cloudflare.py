@@ -44,7 +44,7 @@ def update_dns_record(domain_record, domain_config, ip):
         'name': domain_record['name'],
         'content': ip,
         'ttl': 120,
-        'proxied': domain_config.get('proxied', False) and domain_record['name'][0] != '*'
+        'proxied': domain_config.get('proxied', False)
     }
 
     res = r.put(url, headers=HEADERS, json=data)
