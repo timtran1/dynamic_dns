@@ -1,4 +1,3 @@
-version: '3.3'
 
 services:
   dynamic_dns:
@@ -7,4 +6,3 @@ services:
     container_name: dynamic_dns
     volumes:
       - ./config.json:/app/config.json
-      - ./src:/app/src
