@@ -29,8 +29,10 @@ def get_dns_record(domain):
     )
     res = r.get(url, headers=HEADERS)
     result_list = res.json()['result']
+    data = result_list[0]
+    data['zone_id'] = domain['zone_id']
 
-    return result_list[0] if len(result_list) > 0 else None
+    return data
 
 
 def update_dns_record(domain_record, domain_config, ip):
