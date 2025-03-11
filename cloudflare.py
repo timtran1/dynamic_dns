@@ -1,6 +1,9 @@
 import requests
-from types import DomainConfig
+from schemas import DomainConfig
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 CLOUDFLARE_EMAIL = os.environ.get('CLOUDFLARE_EMAIL', None)
 CLOUDFLARE_API_KEY = os.environ.get('CLOUDFLARE_API_KEY', None)
@@ -20,7 +23,8 @@ def get_zones():
 def get_dns_record(domain: DomainConfig) -> dict | None:
     url = f"{CLOUDFLARE_API_ENDPOINT}/zones/{domain.zone_id}/dns_records?name={domain.name}"
     res = requests.get(url, headers=HEADERS)
-    result_list = res.json()['result']
+    response = res.json()
+    result_list = response.get('result', None)
 
     if not result_list:
         return None

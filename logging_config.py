@@ -21,5 +21,5 @@ handler = logging.StreamHandler()
 handler.setFormatter(formatter)
 
 logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 logger.addHandler(handler)
