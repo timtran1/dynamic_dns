@@ -13,6 +13,8 @@ HEADERS = {
     'X-Auth-Key': CLOUDFLARE_API_KEY
 }
 
+print('CLOUDFLARE_EMAIL', CLOUDFLARE_EMAIL)
+print('CLOUDFLARE_API_KEY', CLOUDFLARE_API_KEY)
 
 def get_zones():
     url = f'{CLOUDFLARE_API_ENDPOINT}/zones'
