@@ -21,7 +21,7 @@ for config in domains:
     if (
             not domain_record or
             domain_record['content'] != current_ip or
-            domain_record['proxied'] != domain_config.get('proxied', False)
+            domain_record['proxied'] != domain_config.proxied
     ):
         logger.info(f'Updating DNS data for {domain_config.name}')
 
